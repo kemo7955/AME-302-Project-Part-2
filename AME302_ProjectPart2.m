@@ -63,30 +63,36 @@ for i = 1:length(k)
       
     figure()
     subplot(2,2,[1 2])
+    hold on;grid on; grid minor
     plot(t,impulseResponse(:,i))
     title(['Impulse Input : Stiffness Coefficient k = ' num2str(k(i))],'Interpreter','latex')
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
     subplot(2,2,3)
+    hold on;grid on; grid minor
     plot(t(1:200),impulseResponse(1:200,i))
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
     subplot(2,2,4)
+    hold on;grid on; grid minor
     plot(t(end-200:end),impulseResponse(end-200:end,i))
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
     
     figure()
     subplot(2,2,[1 2])
+    hold on;grid on; grid minor
     plot(t(1:t1500),stepResponse(:,i))
     title(['Step Input : Stiffness Coefficient k = ' num2str(k(i))],'Interpreter','latex')
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
     subplot(2,2,3)
+    hold on;grid on; grid minor
     plot(t(t460:t480),stepResponse(t460:t480,i))
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
     subplot(2,2,4)
+    hold on;grid on; grid minor
     plot(t(t1480:t1500),stepResponse(t1480:end,i))
     xlabel('time [s]','Interpreter','latex');
     ylabel('$\dot{\theta_p}$ [s]','Interpreter','latex');
