@@ -1,5 +1,5 @@
 \documentclass[letterpaper,12pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=.5in]{geometry}
 \usepackage{graphicx}  % Include figure files
 \usepackage{xcolor}  % Allow for a color text
 \usepackage{amsmath}  % math fonts
@@ -11,7 +11,7 @@
 \usepackage[numbered]{matlab-prettifier} % Let's me import MATLAB code in a nice format
 \usepackage{indentfirst} % This indents the first paragraph. By default latex won't do it.
 
-\setlength{\parskip}{1em} % This skips a line when making new paragraphs
+%\setlength{\parskip}{1em} % This skips a line when making new paragraphs
 \newtagform{show_eq}{(Eq.\ }{)}  % how the equation numbers are displayed
 \usetagform{show_eq} % this goes with the \newtagform
 
@@ -37,11 +37,43 @@
 \end{titlepage}
 
 % ================================== Main Text =====================================
-\begin{figure}
+
+% --------------------------------- Impulse Images ---------------------------------
+\begin{figure}[ht]
     \centering
-    \includegraphics{Test}
-    \label{Test}
+    \includegraphics[scale = .8]{Images/Impulse_k5.png}
+    \includegraphics[scale = .8]{Images/Impulse_k15.png}
 \end{figure}
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .8]{Images/Impulse_k50.png}
+    \includegraphics[scale = .8]{Images/Impulse_k100.png}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .8]{Images/Impulse_k500.png}
+    \includegraphics[scale = .8]{Images/Impulse_k1000.png}
+\end{figure}
+
+% --------------------------------- Step Images ---------------------------------
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .8]{Images/StepInput_k5.png}
+    \includegraphics[scale = .8]{Images/StepInput_k15.png}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .8]{Images/StepInput_k50.png}
+    \includegraphics[scale = .8]{Images/StepInput_k100.png}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = .8]{Images/StepInput_k500.png}
+    \includegraphics[scale = .8]{Images/StepInput_k1000.png}
+\end{figure}
 
 \end{document}
