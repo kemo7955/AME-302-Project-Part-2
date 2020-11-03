@@ -1,4 +1,4 @@
-clear;clc;close all;
+clear;clc;close all;format long
 % ===================== Definition of Variables ===========================
 % Jr : MOI of rotary
 % Jp : MOI of propeller
@@ -60,7 +60,15 @@ for i = 1:length(k)
     ystep = step(T*sys,t(1:t1500));
     impulseResponse(:,i) = yimpulse + yfree;
     stepResponse(:,i) = ystep + yfree(1:t1500);
-      
+    
+    num = [N*c, N*k(i)];
+    den = [N^2*Jr*Jp,...
+        Jp*c+Jp*N^2*b1+Jr*N^2*b2+Jr*N^2*c,...
+        Jp*k(i)+b2*c+Jr*N^2*k(i)+N^2*b1*b2+N^2*b1*c,...
+        N^2*b1*k(i)+b2*k(i)];
+    TransferFunction = tf(num,den)
+    p = pole(TransferFunction)
+    
     figure()
     subplot(2,2,[1 2])
     hold on;grid on; grid minor
@@ -105,21 +113,26 @@ for j = 1:length(k)
     impulsePeaksStart = find(islocalmax(impulseResponse(1:t20,j)));
     if length(impulsePeaksStart) >= 2
         freqImpulseStart = getFrequency( t(impulsePeaksStart) )
+        AmpImpulseStart = getAmp(impulseResponse(1:t20,j))
     end
     
     impulsePeaksEnd = find(islocalmax(impulseResponse(t1980:end,j)));
     if length(impulsePeaksEnd) >= 2
         freqImpulseEnd = getFrequency( t(impulsePeaksEnd) )
+        AmpImpulseEnd  = getAmp(impulseResponse(t1980:end,j))
     end
+    % ------------------------------- Step ----------------------
     
     stepPeaksStart = find(islocalmax(stepResponse(t460:t480,j)));
     if length(stepPeaksStart) >= 2
         freqStepStart = getFrequency( t(stepPeaksStart) )
+        AmpStepStart  = getAmp(stepResponse(t460:t480,j))
     end
     
     stepPeaksEnd = find(islocalmax(stepResponse(t1480:t1500,j)));
     if length(stepPeaksEnd) >= 2
         freqStepEnd = getFrequency( t(stepPeaksEnd) )
+        AmpStepEnd  = getAmp(stepResponse(t1480:t1500,j))
     end
 end
 
